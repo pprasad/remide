@@ -77,16 +77,15 @@ export class RestTemplateService{
             this._stop();
         }
     }
-    public validateResponse(resp:any,callback:Function):void{
+    public validateResponse(resp:any,flag:boolean,callback:Function):void{
         if(resp && resp.errors){
             this.setErrorMsg(resp.description);
             this._stop();
         }else{
-            if(!callback){
+            if(flag){
                 this.setInfoMsg('Successfully Saved');
-            }else{
-               callback(resp);
             }
+            callback(resp);
             this._stop();
         }
     }

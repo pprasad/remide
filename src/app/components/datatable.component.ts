@@ -15,7 +15,7 @@ export class DataTableService{
         this.httpClient._start();
         this.httpClient.getAction(this.httpClient.VIEW_TICKET_API,null).
         subscribe(res=>{
-            this.httpClient.validateResponse(res,function(response:any){
+            this.httpClient.validateResponse(res,false,function(response:any){
                 self.gridData.next(response);
             });
         },errorRes=>{
