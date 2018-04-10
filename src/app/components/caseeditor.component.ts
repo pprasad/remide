@@ -46,6 +46,7 @@ export class FdEditorDialogComponent implements OnInit{
         this.editModel.hide();
     }
     public onSubmit():void{
+        const self=this;
        if(this.caseCreateFrom.invalid){
            return;
         }
@@ -54,7 +55,9 @@ export class FdEditorDialogComponent implements OnInit{
         this.httpClient.getGenericAction(this.httpClient.CREATE_TICKET_API,this.ticketReq).
         subscribe(res=>{
             this.httpClient.validateResponse(res,true,function(response:any){
-                this.dataService.reloadGrid();
+                self.closeModel();
+                self.caseCreateFrom.reset();
+                self.dataService.reloadGrid();
             });
         },errorRes=>{
             this.httpClient.setErrorMsg(errorRes);
