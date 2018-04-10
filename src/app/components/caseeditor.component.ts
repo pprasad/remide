@@ -7,24 +7,8 @@ import {FormGroup,FormBuilder,FormControl,Validators,FormArray} from '@angular/f
 import {ModalDirective} from 'ngx-bootstrap';
 import {CommonUtilService,Source} from './commonutils.service';
 import {RestTemplateService} from './resttemplate.service';
-export class TicketRequest{
-    name:string;
-    requester_id:string;
-    email:string;
-    facebook_id:string;
-    phone:string;
-    twitter_id:string;
-    unique_external_id:string;
-    subject:string;
-    type:string;
-    status:number;
-    priority:number;
-    description:string;
-    responder_id:string;
-    cc_emails:any=[];
-    source:number;
-    company_id:number;
-}
+import {TicketRequest} from './ticketrequest.dao';
+import {DataTableService} from './datatable.component';
 @Component({
     selector:'fd-editor-dialog',
     templateUrl:'./caseeditor.component.html',
@@ -38,7 +22,7 @@ export class FdEditorDialogComponent implements OnInit{
     caseCreateFrom:FormGroup;
     
     constructor(private formBuilder:FormBuilder,private utilService:CommonUtilService,
-        private httpClient:RestTemplateService){
+        private httpClient:RestTemplateService,private dataService:DataTableService){
          this.caseCreateFrom=this.formBuilder.group({
               subject:['',Validators.required],
               description:['',Validators.required],
@@ -69,7 +53,9 @@ export class FdEditorDialogComponent implements OnInit{
         this.ticketReq=this.caseCreateFrom.value;
         this.httpClient.getGenericAction(this.httpClient.CREATE_TICKET_API,this.ticketReq).
         subscribe(res=>{
-            this.httpClient.handleCallback(res);
+            this.httpClient.validateResponse(res,function(){
+                this.dataService.reloadGrid();
+            });
         },errorRes=>{
             this.httpClient.setErrorMsg(errorRes);
         });

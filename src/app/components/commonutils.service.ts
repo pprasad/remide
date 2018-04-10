@@ -41,4 +41,13 @@ export class CommonUtilService{
     get Priorites():Array<Source>{
         return this.priority;
     }
+    get PriorityValue():any{
+        return {1:'Low',2:'Medium',3:'High',4:'Urgent'};
+    }
+    get StatusValue():any{
+        return {2:'Open',3:'Pending',4:'Resolved',5:'Closed'};
+    }
+    get SourceValue():any{
+        return {1:'Email',2:'Portal',3:'Phone',4:'Chat',5:'Mobilehelp',6:'Feedback Widget',7:'Outbound Email'};
+    }
 }

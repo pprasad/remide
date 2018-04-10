@@ -1,0 +1,28 @@
+<div class="grid_scroll">
+    <div class="gird-header-hScroll" (scroll)="onWindowScroll($event)">
+        <table class="grid table table-striped" role="grid">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Source</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Created Date</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="grid-body-vScroll" [style.width]="hScrollWidth">
+            <table class="grid table table-striped" role="grid">
+                <tbody>
+                    <tr *ngFor="let ticket of listofTickets" role="row">
+                        <td>{{ticket.id}}</td>
+                        <td>{{SourceMap[ticket.source]}}</td>
+                        <td>{{StatusMap[ticket.status]}}</td>
+                        <td>{{PriorityMap[ticket.priority]}}</td>
+                        <td>{{ticket.created_at}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>  
+    </div>
+</div>

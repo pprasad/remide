@@ -1,0 +1,24 @@
+export class TicketRequest{
+    name:string;
+    requester_id:string;
+    email:string;
+    facebook_id:string;
+    phone:string;
+    twitter_id:string;
+    unique_external_id:string;
+    subject:string;
+    type:string;
+    status:number;
+    priority:number;
+    description:string;
+    responder_id:string;
+    cc_emails:any=[];
+    source:number;
+    company_id:number;
+    description_text:string;
+    due_by:string;
+    fr_due_by:string;
+    created_at:string;
+    updated_at:string;
+    is_escalated:boolean;
+}

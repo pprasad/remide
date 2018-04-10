@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static(__dirname + '/dist'));
 
-app.post("/api/create_ticker",function(req,res){
+app.post("/api/create_tickets",function(req,res){
     var URL="api/v2/tickets";
     var rquest=httpClient.get(URL,'POST',null,function(response){
        res.send(response);
@@ -17,6 +17,14 @@ app.post("/api/create_ticker",function(req,res){
     })
     rquest.write(JSON.stringify(req.body));
     rquest.end();
+});
+app.get("/api/viewtickets",function(req,res){
+   var URL="api/v2/tickets?order_type=asc";
+   var request=httpClient.get(URL,'GET',null,function(response){
+        res.send(response);
+        res.end();
+   }); 
+   request.end();
 });
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 80);

@@ -1,0 +1,61 @@
+.grid_scroll{
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+.gird-header-hScroll{
+    overflow: auto;
+    width:100%;
+}
+.grid-body-vScroll{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 200px;
+}
+.grid{
+   border-collapse: collapse;
+   background: white;
+   table-layout: fixed;
+   width: 100%;
+}
+.grid th, .grid td {
+   /* padding: 8px 16px;*/
+    width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+.grid-body-vScroll table tbody tr td span{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /*width: 50% !important;*/
+    display: inline-block;
+}
+.spliter{
+   border:1px solid #736b6b;
+}
+.grid-body-vScroll input{
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+/*::-webkit-scrollbar {
+    width:8px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(88, 12, 12, 0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}*/
+.grid>tbody>tr>td, .grid>tbody>tr>th, 
+.grid>tfoot>tr>td, .grid>tfoot>tr>th, 
+.grid>thead>tr>td, .grid>thead>tr>th{
+  border-bottom: 1px solid #ddd !important;
+  border-top:0px !important;
+}

@@ -9,7 +9,8 @@ import {ToastyService, ToastyConfig, ToastOptions, ToastData} from 'ng2-toasty';
 export class RestTemplateService{
    private toastOptions:ToastOptions; 
    private CONTEXT_PATH="/";
-   public  CREATE_TICKET_API="api/create_ticker";
+   public  CREATE_TICKET_API="api/create_tickets";
+   public  VIEW_TICKET_API="api/viewtickets";
    constructor(private _http:Http,private spinnerService:SpinnerService,
     private toast:ToastyService){
         this.toastOptions={
@@ -32,6 +33,12 @@ export class RestTemplateService{
         return this._http.post(path,request,options).
         map(res=>res.json()).catch(this.errorHandler);
    }
+   public getAction(url:string,request:any):Observable<any>{
+    let path=this.CONTEXT_PATH.concat(url);
+    let options=this.setHeaders();
+    return this._http.get(path,options).
+    map(res=>res.json()).catch(this.errorHandler);
+}
    private setHeaders(): any {
         let headers = new Headers( { 'Content-Type': 'application/json' });
         let options = new RequestOptions( { 'headers': headers });
@@ -67,6 +74,19 @@ export class RestTemplateService{
             this._stop();
         }else{
             this.setInfoMsg('Successfully Saved');
+            this._stop();
+        }
+    }
+    public validateResponse(resp:any,callback:Function):void{
+        if(resp && resp.errors){
+            this.setErrorMsg(resp.description);
+            this._stop();
+        }else{
+            if(!callback){
+                this.setInfoMsg('Successfully Saved');
+            }else{
+               callback(resp);
+            }
             this._stop();
         }
     }
