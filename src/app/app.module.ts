@@ -13,7 +13,7 @@ import {ModalModule,BsDatepickerModule} from 'ngx-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 /*Error Components & Services*/
 import { FdControlMessagesComponent } from './components/fdcontrolmessages.component';
-import {ValidationService } from './Components/validate.service';
+import {ValidationService } from './components/validate.service';
 import {CommonUtilService} from './components/commonutils.service';
 import {RestTemplateService} from './components/resttemplate.service';
 /*Notifications*/
