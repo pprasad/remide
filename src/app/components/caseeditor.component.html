@@ -1,0 +1,74 @@
+<div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content modal-content-lg">
+           <form [formGroup]="caseCreateFrom">
+              <div class="modal-header panel--indigo">
+                <h4 class="modal-title pull-left">{{title}}</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="closeModel()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body modal-body-lg">
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text"  formControlName="subject" class="form-control">
+                        <control-messages [control]="caseCreateFrom.controls['subject']" [labelDesc]="'Subject is'"></control-messages>
+                      </div>
+                    <div class="form-group">
+                          <label>Description</label>
+                          <textarea class="form-control" formControlName="description"></textarea>
+                          <control-messages [control]="caseCreateFrom.controls['description']" [labelDesc]="'Description is'"></control-messages>
+                    </div>
+                    <div class="form-group">
+                        <label for="source" class="center-block">Source:</label>
+                        <select id="source" class="form-control" formControlName="source">
+                            <option *ngFor="let source of Source" [ngValue]="source.value">{{source.key}}</option>
+                       </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status" class="center-block">Status:</label>
+                        <select id="status" class="form-control" formControlName="status">
+                            <option *ngFor="let status of Status" [ngValue]="status.value">{{status.key}}</option>
+                       </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority" class="center-block">Priority:</label>
+                        <select id="priority" class="form-control" formControlName="priority">
+                            <option *ngFor="let priority of Priority" [ngValue]="priority.value">{{priority.key}}</option>
+                       </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Requested By</label>
+                      <input type="text"  formControlName="name" class="form-control">
+                      <control-messages [control]="caseCreateFrom.controls['name']" [labelDesc]="'Requested By is'"></control-messages>
+                    </div>
+                    <div class="form-group">
+                          <label>Email</label>
+                          <input type="text" formControlName="email"  class="form-control">
+                          <control-messages [control]="caseCreateFrom.controls['email']" [labelDesc]="'Email is'"></control-messages>
+                    </div>
+                    <div formArrayName="cc_emails" class="form-group">
+                        <label>Incoming ticket email:</label>
+                        <div *ngFor="let itemControl of ccEmails.controls; index as i">
+                          <span  class="input-group">
+                            <input class="form-control input-cal-sh" type="text" [formControlName]="i">
+                            <span class="fa fa-remove pull-middle default-cursor" (click)="remove(i)"></span>
+                          </span>  
+                          <control-messages [control]="itemControl" [labelDesc]="'Email is'"></control-messages>
+                          <div class="clear-fix"></div>
+                        </div>
+                        <a (click)=" addEmail()" class="pull-right">
+                            <span class="fa fa-plus">Add another email</span>
+                        </a>
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <div class="pull-left">
+                  <button class="btn btn-default btn-sm" (click)="closeModel()">Cancel</button>
+                  <button class="btn btn-primary btn-sm" (click)="onSubmit()">Save</button>
+                </div>
+              </div>
+            </form>  
+          </div>
+        </div>
+    </div>

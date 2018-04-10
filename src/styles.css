@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+/*Button*/
+btn.btn-sm, .btn.wishlist {
+    font-size: .6rem;
+    padding: .5rem 1.6rem;
+}
+.input-bottom-border{
+    border: none;
+    border-bottom: 1px solid #bdbdbd;
+} 
+.btn[class*=btn-outline-].btn-sm, .btn[class*=btn-outline-].wishlist {
+    padding-top: .42rem;
+    padding-bottom: .42rem;
+}
+.btn-rounded {
+    border-radius: 10em;
+}
+.input-sm-8{
+    width:90%;
+}
+.pull-middle{
+    margin:10px;
+}
+.clear-fix{
+    content: '';
+    width: 100%;
+    clear: both;
+    height: 10px;
+}
