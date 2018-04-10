@@ -5,8 +5,8 @@
 import {Component,OnInit,ViewChild,Input} from '@angular/core';
 import {FormGroup,FormBuilder,FormControl,Validators,FormArray} from '@angular/forms';
 import {ModalDirective} from 'ngx-bootstrap';
-import {CommonUtilService,Source} from './CommonUtilService';
-import {RestTemplateService} from './RestTemplateService';
+import {CommonUtilService,Source} from './commonutils.service';
+import {RestTemplateService} from './resttemplate.service';
 export class TicketRequest{
     name:string;
     requester_id:string;

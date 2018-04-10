@@ -1,6 +1,6 @@
 import { Component, Input,OnInit,AfterViewInit} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ValidationService } from './ValidationService';
+import { ValidationService } from './validate.service';
 @Component({
   selector: 'control-messages',
   template: `<div class="text-danger" *ngIf="errorMessage !== null">
