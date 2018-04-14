@@ -16,6 +16,11 @@
    background: white;
    table-layout: fixed;
    width: 100%;
+   margin-bottom: 0rem !important;
+}
+.grid th{
+    background-color: #049fd9!important;
+    color:white;
 }
 .grid th, .grid td {
    /* padding: 8px 16px;*/
