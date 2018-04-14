@@ -1,5 +1,10 @@
-import {Component,AfterViewInit} from '@angular/core';
+import {Component,AfterViewInit,Input,OnChanges} from '@angular/core';
+import {Subject} from 'rxjs/Subject';
 
+export class PieChartService{
+   private pieChart:Subject<any>=new Subject<any>();
+   public pieChartObserver=this.pieChart.asObservable(); 
+}
 @Component({
     selector:'pie-chart',
     template:`
@@ -15,18 +20,33 @@ import {Component,AfterViewInit} from '@angular/core';
     `
 })
 
-export class PieChartComponent{
+export class PieChartComponent implements OnChanges{
     // Doughnut
+  @Input() charData:any=null;
   public doughnutChartLabels:string[] = ['Open','Pending','Resolved','Closed'];
-  public doughnutChartData:number[] = [350, 450, 100,20];
+  public doughnutChartData:number[]=[0,0,0];
   public doughnutChartType:string = 'pie';
 
   constructor(){}
-   // events
+  // events
   public chartClicked(e:any):void {
     console.log(e);
   }
   public chartHovered(e:any):void {
     console.log(e);
+  }
+  ngOnChanges(){
+       if(this.charData){
+           let values:any=[];
+           this.doughnutChartLabels.forEach(key=>{
+                key=key.toLowerCase();
+               if(this.charData[key]){
+                   values.push(this.charData[key]);
+               }else{
+                   values.push(0);
+               }
+           });
+           this.doughnutChartData=values;
+       }
   }
 }

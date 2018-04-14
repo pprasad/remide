@@ -8,6 +8,7 @@ import {ToastyService, ToastyConfig, ToastOptions, ToastData} from 'ng2-toasty';
 @Injectable()
 export class RestTemplateService{
    private toastOptions:ToastOptions; 
+   //private CONTEXT_PATH="http://localhost/";
    private CONTEXT_PATH="/";
    public  CREATE_TICKET_API="api/create_tickets";
    public  VIEW_TICKET_API="api/viewtickets";

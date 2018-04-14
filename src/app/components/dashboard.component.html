@@ -7,7 +7,7 @@
        <div class="card-body">
           <div class="row"> 
                   <div class="col-md-4 px-4">
-                     <pie-chart></pie-chart>
+                     <pie-chart [charData]="chartData"></pie-chart>
                   </div> 
                   <!--Grid Column-->
                   <div class="col-md-8 px-4">
@@ -26,7 +26,7 @@
                       </div> 
                       <div class="row">
                          <div class="col-md-12">
-                             <data-table></data-table>
+                             <data-table (refreshChart)="reloadChart($event)"></data-table>
                          </div>
                       </div>                       
                   </div>

@@ -20,7 +20,7 @@ import {RestTemplateService} from './components/resttemplate.service';
 import {ToastyModule} from 'ng2-toasty';
 import {DataTableComponent,DataTableService} from './components/datatable.component';
 import {SpinnerComponent,SpinnerService} from './components/spinner.component';
-import {PieChartComponent} from './components/piechart.component';
+import {PieChartComponent,PieChartService} from './components/piechart.component';
 /*Router Service*/
 import {AppRoutes} from './app.router.service';
 
@@ -49,7 +49,8 @@ import {AppRoutes} from './app.router.service';
     HttpModule,
     ChartsModule
   ],
-  providers: [ValidationService,CommonUtilService,RestTemplateService,SpinnerService,DataTableService],
+  providers: [ValidationService,CommonUtilService,RestTemplateService,
+    SpinnerService,DataTableService,PieChartService],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]
 })

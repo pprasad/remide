@@ -1,4 +1,4 @@
-import {Component,OnInit,Injectable} from '@angular/core';
+import {Component,OnInit,Injectable,EventEmitter,Output} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import {Subject} from 'rxjs/Subject';
 import {RestTemplateService} from './resttemplate.service';
@@ -30,14 +30,16 @@ export class DataTableService{
 })
 export class DataTableComponent implements OnInit{
     listofTickets:TicketRequest[]=[];
-    hScrollWidth:string;   
+    hScrollWidth:string;  
+    @Output()
+    refreshChart:EventEmitter<any>=new EventEmitter<any>();
+
     constructor(private dataService:DataTableService,private utilService:CommonUtilService){
        dataService.gridDataObserver.subscribe((gridData:TicketRequest[]) => {
-               console.info("*****Data Grid******");
                gridData.forEach(val=>{
                   this.listofTickets.push(val);
                });
-               console.info(this.listofTickets);
+               this.refreshChart.emit(this.listofTickets);
        });
     }
     ngOnInit(){ }

@@ -8,7 +8,6 @@ var extServerOptions = {
 	    	'Content-Type':'application/json'
 	    }
 };
-//tathreat
 module.exports = {
    path:function(){
 	  return '/';  
