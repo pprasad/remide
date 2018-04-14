@@ -36,6 +36,7 @@ export class DataTableComponent implements OnInit{
 
     constructor(private dataService:DataTableService,private utilService:CommonUtilService){
        dataService.gridDataObserver.subscribe((gridData:TicketRequest[]) => {
+               this.listofTickets=[];
                gridData.forEach(val=>{
                   this.listofTickets.push(val);
                });
