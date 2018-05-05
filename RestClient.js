@@ -1,10 +1,10 @@
 var http = require("https");
 var extServerOptions = {
-		host: 'mysupportindia.freshdesk.com',
+		host: 'saaseracom.freshdesk.com',
 	    path:'/',
 	    method:null,
 	    headers: {
-	    	'Authorization':'Basic eEZzUzc4Q0hmTkJ0bUk4R3Q4Wmc6WA==',
+	    	'Authorization':'Basic a1JPZWRuSlRjazRaamtCS1Nrck86WA==',
 	    	'Content-Type':'application/json'
 	    }
 };
