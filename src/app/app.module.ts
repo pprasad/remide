@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule} from '@angular/router';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
@@ -9,7 +10,7 @@ import {FuiNavigationComponent} from './layout/navigation.component';
 import {FdFooterComponent} from './layout/footer.component';
 import {FdDashboardComponent} from './components/dashboard.component';
 import {FdEditorDialogComponent} from './components/caseeditor.component';
-import {ModalModule,BsDatepickerModule} from 'ngx-bootstrap';
+import {ModalModule,BsDatepickerModule,BsDropdownModule} from 'ngx-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 /*Error Components & Services*/
 import { FdControlMessagesComponent } from './components/fdcontrolmessages.component';
@@ -23,6 +24,9 @@ import {SpinnerComponent,SpinnerService} from './components/spinner.component';
 import {PieChartComponent,PieChartService} from './components/piechart.component';
 /*Router Service*/
 import {AppRoutes} from './app.router.service';
+import {ExternalLinkComponent} from './components/app.externallink.component';
+import {AuthorizationService} from './components/authorization.service';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +38,8 @@ import {AppRoutes} from './app.router.service';
     FuiNavigationComponent,
     FdFooterComponent,
     FdDashboardComponent,
-    FdEditorDialogComponent
+    FdEditorDialogComponent,
+    ExternalLinkComponent
   ],
   imports: [
     BrowserModule,
@@ -47,10 +52,12 @@ import {AppRoutes} from './app.router.service';
     BsDatepickerModule.forRoot(),
     ToastyModule.forRoot(),
     HttpModule,
-    ChartsModule
+    ChartsModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [ValidationService,CommonUtilService,RestTemplateService,
-    SpinnerService,DataTableService,PieChartService],
+    SpinnerService,DataTableService,PieChartService,{provide: LocationStrategy, useClass: HashLocationStrategy},
+    AuthorizationService],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]
 })

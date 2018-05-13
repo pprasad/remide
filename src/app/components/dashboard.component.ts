@@ -2,6 +2,7 @@ import {Component,OnInit,ViewChild} from '@angular/core';
 import {FdEditorDialogComponent} from './caseeditor.component';
 import {DataTableService} from './datatable.component';
 import {CommonUtilService} from './commonutils.service';
+import {AuthorizationService} from './authorization.service';
 
 @Component({
    selector:'fd-dashboard',
@@ -12,9 +13,13 @@ export class FdDashboardComponent implements OnInit{
     @ViewChild('editModal') openDialog:FdEditorDialogComponent;
     chartData:any;
      constructor(private dataSerice:DataTableService,
-        private utilService:CommonUtilService){}
+        private utilService:CommonUtilService,
+        private authService:AuthorizationService){}
      ngOnInit(){
-         this.dataSerice.reloadGrid();
+         let _this=this;
+         this.authService.isAuth(function(){
+             _this.dataSerice.reloadGrid();
+         });
      }
      openWindow():void{
          this.openDialog.showModel();
